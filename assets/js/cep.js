@@ -101,3 +101,37 @@ form.addEventListener('submit', (e) =>{
    
 })
 
+// Exibir dados em card
+function mostrarDados(){
+
+    const container = document.querySelector('#cardsUsuarios')
+    
+    //  limpar o container
+    container.innerHTML = ''
+
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+    if(usuarios.length === 0){
+      alert('Não existem dados para exibição!')
+      return;
+    }
+
+    usuarios.forEach(usuario =>{})
+        container.innerHTML += `
+         <div class="rounded-lg shadow-md p-6 my-3 border border-gray-600 text-gray-400">
+        <h3 class="text-2xl text-blue-700 mb-4">${usuarios.nome}</h3>
+        <p class="mb-1">CEP:${usuarios.cep}</p>
+        <p class="mb-1">Endereço:${usuarios.logradouro} - ${usuarios.numero}</p>
+        <p class="mb-1">Complemento: ${usuarios.complemento}</p>
+        <p class="mb-1">Bairro: ${usuarios.bairro}</p>
+        <p class="mb-1">Cidade: ${usuarios.cidade}</p>
+        <p class="mb-1">Estado:  ${usuarios.estado} </p>
+
+     </div> `
+      
+
+
+}
+
+document.querySelector('#exibirDados').addEventListener('click', mostrarDados)
+
